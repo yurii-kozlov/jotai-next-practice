@@ -1,12 +1,10 @@
-import { numberOfDotsAtom } from "@/store/dots";
-import { useAtomValue } from "jotai";
+import { useCommitCount } from "@/hooks/useCommitCount";
 
 export const Stats = () => {
-  const dotsNumber = useAtomValue(numberOfDotsAtom);
-
+  console.log('heloo')
   return (
     <ul>
-      <li>Dots: {dotsNumber}</li>
+      <li>Dots: {useCommitCount()}</li>
     </ul>
   );
 };

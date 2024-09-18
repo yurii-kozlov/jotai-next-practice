@@ -4,21 +4,30 @@ import { MouseEvent } from "react";
 import { SvgDots } from "../SvsDots";
 import { Stats } from "../Stats";
 import { Point } from "@/types/store";
-import { useSetAtom } from "jotai";
-import { dotsAtom } from "@/store/dots";
+import { useAtom } from "jotai";
+import { handleMouseDownAtom, handleMouseMoveAtom, handleMouseUpAtom } from "@/store/dots";
 
 export const SvgRoot = () => {
-  const setDots = useSetAtom(dotsAtom);
+  const [, handleMouseMove] = useAtom(handleMouseMoveAtom)
+  const [, handleMouseDown] = useAtom(handleMouseDownAtom)
+  const [, handleMouseUp] = useAtom(handleMouseUpAtom)
 
-  const handleMouseMove = (event: MouseEvent<SVGSVGElement>) => {
+  const handleMouseMoving = (event: MouseEvent<SVGSVGElement>): void => {
     const point: Point = [event.clientX, event.clientY];
 
-    setDots((prevValue) => [...prevValue, point]);
+    handleMouseMove(point)
   };
 
   return (
     <div>
-      <svg width={200} height={200} viewBox="0 0 200 200" onMouseMove={handleMouseMove}>
+      <svg
+        width={200}
+        height={200}
+        viewBox="0 0 200 200"
+        onMouseMove={handleMouseMoving}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+      >
         <rect width={200} height={200} fill="#eee" />
         <SvgDots />
       </svg>
