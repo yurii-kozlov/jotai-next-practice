@@ -1,6 +1,6 @@
 import { Point } from "@/types/atoms";
 import { atom } from "jotai";
-import { addShapeAtom } from "./shape/shape";
+import { addShapeAtom } from "./shapeAtoms";
 
 export const dotsAtom = atom<readonly Point[]>([]);
 

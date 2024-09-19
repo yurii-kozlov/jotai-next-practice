@@ -6,7 +6,7 @@ import { Stats } from "../Stats";
 import { Point } from "@/types/atoms";
 import { useAtom } from "jotai";
 import { handleMouseDownAtom, handleMouseMoveAtom, handleMouseUpAtom } from "@/store/dots";
-import { SvgShape } from "../SvgShape";
+import { SvgShapes } from "../SvgShapes";
 
 export const SvgRoot = () => {
   const [, handleMouseMove] = useAtom(handleMouseMoveAtom)
@@ -30,7 +30,7 @@ export const SvgRoot = () => {
         onMouseUp={handleMouseUp}
       >
         <rect width={200} height={200} fill="#eee" />
-        <SvgShape />
+        <SvgShapes />
         <SvgDots />
       </svg>
       <Stats />

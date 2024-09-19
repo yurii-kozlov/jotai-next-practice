@@ -1,8 +1,14 @@
-import { shapeAtom } from "@/store/shape/shape";
-import { useAtom } from "jotai";
+import { Shape } from "@/types/atoms";
+import { PrimitiveAtom, useAtom } from "jotai";
+import { FC } from "react";
 
-export const SvgShape = () => {
+interface SvgShapeProps {
+  shapeAtom: PrimitiveAtom<Shape>
+}
+
+export const SvgShape: FC<Readonly<SvgShapeProps>> = ({ shapeAtom }) => {
   const [shape] = useAtom(shapeAtom)
+
   return (
     <g>
       <path
