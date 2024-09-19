@@ -13,4 +13,6 @@ export const shapeAtom = atom<Shape>({ path: '' });
   }
 ); */
 
-export const createShapeAtom = (points: readonly Point[]) => atom<Shape>({ path: getPointsToPath(points)});
+export const createShapeAtom = (
+  points: readonly Point[]
+) => atom({ path: getPointsToPath(points) });
