@@ -1,14 +1,15 @@
-import { Point } from "@/types/store";
+import { Point } from "@/types/atoms";
 import { atom } from "jotai";
+import { addShapeAtom } from "./shape/shape";
 
-export const dotsAtom = atom<Point[]>([]);
+export const dotsAtom = atom<readonly Point[]>([]);
 
 export const drawingAtom = atom<boolean>(false);
 
 // Write-only atom prevents unnecessary rerenders
 export const handleMouseDownAtom = atom(
   null,
-  (get, set) => {
+  (_get, set) => {
     set(drawingAtom, true)
   }
 );
@@ -16,8 +17,9 @@ export const handleMouseDownAtom = atom(
 // Write-only atom
 export const handleMouseUpAtom = atom(
   null,
-  (get, set) => {
-    set(drawingAtom, false)
+  (_get, set) => {
+    set(drawingAtom, false);
+    set(commitDotsAtom);
   }
 )
 
@@ -39,5 +41,14 @@ export const handleMouseMoveAtom = atom(
     if (get(drawingAtom)) {
       set(dotsAtom, (prevValue) => [...prevValue, update]);
     }
+  }
+)
+
+export const commitDotsAtom = atom(
+  null,
+  (get, set) => {
+    console.log('called')
+    set(addShapeAtom, get(dotsAtom));
+    set(dotsAtom, []);
   }
 )
