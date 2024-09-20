@@ -1,6 +1,7 @@
 import { SvgRoot } from "@/components/SvgRoot";
-import styles from "./page.module.scss";
 import { Counter } from "@/components/Counter";
+import { Controls } from "@/components/Controls";
+import styles from "./page.module.scss";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <Counter />
       <div>
         <SvgRoot />
+        <Controls />
       </div>
     </div>
   );

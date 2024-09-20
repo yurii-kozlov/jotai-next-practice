@@ -26,7 +26,7 @@ export const SvgShape: FC<Readonly<SvgShapeProps>> = ({ shapeAtom }) => {
       <path
         d={shape.path}
         fill="none"
-        stroke="black"
+        stroke={shape.color ?? 'black'}
         strokeWidth="3"
       />
     </g>

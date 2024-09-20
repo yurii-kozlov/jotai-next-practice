@@ -17,3 +17,25 @@ export const selectedAtomCreator = (shapeAtom: ShapeAtom): Atom<boolean> => {
 
   return selectedAtom;
 }
+
+export const colorAtom = atom(
+  (get) => {
+    const selectedShapeAtom = get(selectedShapeAtomAtom);
+
+    if (selectedShapeAtom) {
+      return get(selectedShapeAtom).color || '';
+    }
+
+    return null;
+  },
+  (get, set, color: string) => {
+    const selectedShapeAtom = get(selectedShapeAtomAtom);
+
+    if (selectedShapeAtom) {
+      set(selectedShapeAtom, (prevValue) => ({
+        ...prevValue,
+        color
+      }));
+    }
+  }
+);
