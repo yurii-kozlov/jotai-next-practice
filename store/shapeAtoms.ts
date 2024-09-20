@@ -2,6 +2,7 @@ import { Point, ShapeAtom } from "@/types/atoms";
 import { atom } from "jotai";
 import { createShapeAtom } from "./shape/shape";
 import { selectAtom, selectedAtom, unselectAtom } from "./selectedShapeAtom";
+import { shapeAtomsAtom as shapeAtomsAtomHistory } from "./history";
 
 export const shapeAtomsAtom = atom<ShapeAtom[]>([]);
 
@@ -14,7 +15,7 @@ export const addShapeAtom = atom(
 
     const shapeAtom = createShapeAtom(value);
 
-    set(shapeAtomsAtom, (prev) => [
+    set(shapeAtomsAtomHistory, (prev) => [
       ...prev,
       shapeAtom
     ]);

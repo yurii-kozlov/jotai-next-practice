@@ -2,9 +2,9 @@ import { PrimitiveAtom } from "jotai";
 
 export type Point = [number, number];
 
-export interface Shape {
+export interface ShapeAtomValue {
   path: string;
   color?: string;
 };
 
-export type ShapeAtom = PrimitiveAtom<Shape>
+export type ShapeAtom = PrimitiveAtom<ShapeAtomValue>

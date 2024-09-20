@@ -1,6 +1,6 @@
-import { shapeAtomsAtom } from "@/store/shapeAtoms";
 import { useAtom } from "jotai";
 import { SvgShape } from "../SvgShape";
+import { shapeAtomsAtom } from "@/store/history";
 
 export const SvgShapes = () => {
   const [shapeAtoms] = useAtom(shapeAtomsAtom);

@@ -1,9 +1,9 @@
 import { atom } from "jotai";
 import { Point } from "@/types/atoms";
-import { Shape } from "@/types/atoms";
+import { ShapeAtomValue } from "@/types/atoms";
 import { getPointsToPath } from "./helpers";
 
-export const shapeAtom = atom<Shape>({ path: '' });
+export const shapeAtom = atom<ShapeAtomValue>({ path: '' });
 
 // write-only atom as well
 /* export const addShapeAtom = atom(
