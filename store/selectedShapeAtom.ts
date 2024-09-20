@@ -39,3 +39,12 @@ export const colorAtom = atom(
     }
   }
 );
+
+export const selectedAtom = atom((get) => get(selectedShapeAtomAtom));
+
+export const unselectAtom = atom(
+  null,
+  (_get, set) => {
+    set(selectedShapeAtomAtom, null)
+  }
+);
