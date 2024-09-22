@@ -15,8 +15,9 @@ export const SvgRoot = () => {
 
   const handleMouseMoving = (event: MouseEvent<SVGSVGElement>): void => {
     const point: Point = [event.clientX, event.clientY];
+    const { x, y } = event.currentTarget.getBoundingClientRect();
 
-    handleMouseMove(point)
+    handleMouseMove([point[0] - x, point[1] - y]);
   };
 
   return (
@@ -24,12 +25,12 @@ export const SvgRoot = () => {
       <svg
         width={200}
         height={200}
-        viewBox="0 0 200 200"
+        viewBox="0 0 200 120"
         onMouseMove={handleMouseMoving}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
       >
-        <rect width={200} height={200} fill="#eee" />
+        <rect width={200} height={120} fill="#eee" />
         <SvgShapes />
         <SvgDots />
       </svg>
